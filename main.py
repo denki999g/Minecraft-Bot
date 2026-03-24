@@ -20,7 +20,7 @@ async def check(ctx):
     try:
         status = server.status()
         players = status.players.online
-        await ctx.respond(f"there are {players} in the server.")
+        await ctx.respond(f"there are {players} people in the server.")
     except:
         print("The server is offline or unreachable.")
 
