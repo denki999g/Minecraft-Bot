@@ -8,4 +8,5 @@ dependencies = [
     "mcstatus>=13.0.0",
     "py-cord>=2.7.1",
     "python-dotenv>=1.2.2",
+    "requests>=2.33.0",
 ]
