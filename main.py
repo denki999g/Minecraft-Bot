@@ -2,6 +2,7 @@ import discord
 import os
 from mcstatus import JavaServer
 from dotenv import load_dotenv
+import exchange_rate
 
 load_dotenv()
 bot = discord.Bot()
@@ -14,6 +15,14 @@ async def on_ready():
 @bot.slash_command(name="hello", description="Hello World!")
 async def hello(ctx):
     await ctx.respond(f"hello {ctx.author.name}!")
+
+# We need requests library for this one.
+@bot.slash_command(name="usd", description="This is to check the exchange rate between USD and KRW (how much 1 USD is worth in Korean won).")
+async def usd_to_krw(ctx):
+    usd_to_krw_dict = exchange_rate.get_usd_to_krw_dict()
+    er_date = usd_to_krw_dict["date"]
+    er_value = usd_to_krw_dict["rates"]["KRW"]
+    await ctx.respond(f"{er_date}, 1 USD = {er_value} KRW")
 
 @bot.slash_command(name="check", description="This is to check how many the people are connected to the server")
 async def check(ctx):
