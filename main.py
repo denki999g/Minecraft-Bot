@@ -30,17 +30,19 @@ async def usd_to_krw(ctx):
 async def check(ctx):
     try:
         status = server.status()
-        players = status.players.online
-        playerNames = status.players.sample
-        if players == 0:
+        playerCount = status.players.online
+        players = status.players.sample
+        playerNames = [player.name for player in players]
+
+        if playerCount == 0:
             await ctx.respond(f"there is no one in the server.")
-        elif players == 1:
+        elif playerCount == 1:
             await ctx.respond(
-                f"there is one person in the server."
-                f"player : {playerNames}")
+                f"there is one person in the server.\n"
+                f"player : {", ".join(playerNames)}")
         else:
             await ctx.respond(
-                f"there are {players} people in the server."
+                f"there are {players} people in the server.\n"
                 f"players : {", ".join(playerNames)}")
     except:
         await ctx.respond("The server is offline or unreachable.")
