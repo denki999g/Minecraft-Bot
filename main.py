@@ -22,7 +22,9 @@ async def usd_to_krw(ctx):
     usd_to_krw_dict = exchange_rate.get_usd_to_krw_dict()
     er_date = usd_to_krw_dict["date"]
     er_value = usd_to_krw_dict["rates"]["KRW"]
-    await ctx.respond(f"{er_date}, 1 USD = {er_value} KRW")
+    await ctx.respond(
+        f"Date: {er_date}\n"
+        f"1 USD = {er_value} KRW")
 
 @bot.slash_command(name="check", description="This is to check how many the people are connected to the server")
 async def check(ctx):
@@ -45,9 +47,10 @@ async def version(ctx):
         status = server.status()
         modName, modVersion = status.raw.get("betterStatus").values()
         serverVersion = status.version.name
-        print(f"Server version : {serverVersion}")
-        print(f"Mod name : {modName}")
-        print(f"Mod version : {modVersion}")
+        await ctx.respond("" \
+            f"Server version : {serverVersion}\n"
+            f"Mod name : {modName}\n"
+            f"Mod version : {modVersion}\n")
     except:
         await ctx.respond("The server is offline or unreachable.")
         print("The server is offline or unreachable.")
