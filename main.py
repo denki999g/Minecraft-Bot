@@ -36,8 +36,21 @@ async def check(ctx):
         else:
             await ctx.respond(f"there are {players} people in the server.")
     except:
+        await ctx.respond("The server is offline or unreachable.")
         print("The server is offline or unreachable.")
 
+@bot.slash_command(name="version", description="This is to check the java server version and the mod version")
+async def version(ctx):
+    try:
+        status = server.status()
+        modName, modVersion = status.raw.get("betterStatus").values()
+        serverVersion = status.version.name
+        print(f"Server version : {serverVersion}")
+        print(f"Mod name : {modName}")
+        print(f"Mod version : {modVersion}")
+    except:
+        await ctx.respond("The server is offline or unreachable.")
+        print("The server is offline or unreachable.")
 
 def main():
     token = os.getenv("DISCORD_TOKEN")
