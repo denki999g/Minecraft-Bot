@@ -42,7 +42,7 @@ async def check(ctx):
                 f"player : {", ".join(playerNames)}")
         else:
             await ctx.respond(
-                f"there are {players} people in the server.\n"
+                f"there are {playerCount} people in the server.\n"
                 f"players : {", ".join(playerNames)}")
     except:
         await ctx.respond("The server is offline or unreachable.")
