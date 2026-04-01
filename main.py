@@ -23,6 +23,7 @@ async def usd_to_krw(ctx):
     er_date = usd_to_krw_dict["date"]
     er_value = usd_to_krw_dict["rates"]["KRW"]
     await ctx.respond(
+        ".\n"
         f"Date: {er_date}\n"
         f"1 USD = {er_value} KRW")
 
@@ -39,10 +40,12 @@ async def check(ctx):
             await ctx.respond(f"there is no one in the server.")
         elif playerCount == 1:
             await ctx.respond(
+                ".\n"
                 f"there is one person in the server.\n"
                 f"player : {", ".join(playerNames)}")
         else:
             await ctx.respond(
+                ".\n"
                 f"there are {playerCount} people in the server.\n"
                 f"players : {", ".join(playerNames)}")
     except:
@@ -55,7 +58,8 @@ async def version(ctx):
         status = server.status()
         modName, modVersion = status.raw.get("betterStatus").values()
         serverVersion = status.version.name
-        await ctx.respond("" \
+        await ctx.respond(
+            ".\n"
             f"Server version : {serverVersion}\n"
             f"Mod name : {modName}\n"
             f"Mod version : {modVersion}\n")
