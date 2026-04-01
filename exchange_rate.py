@@ -1,6 +1,7 @@
 import requests
 import dotenv
 import datetime
+import os
 
 dotenv.load_dotenv()
 
