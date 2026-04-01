@@ -25,7 +25,7 @@ async def usd_to_krw(ctx):
     await ctx.respond(
         ".\n"
         f"Date: {er_date}\n"
-        f"1 USD = {er_value} KRW")
+        f"1 USD = {er_value:.2f} KRW")
 
 @bot.slash_command(name="check", description="This is to check how many the people are connected to the server")
 async def check(ctx):
