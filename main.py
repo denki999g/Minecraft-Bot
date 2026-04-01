@@ -32,7 +32,8 @@ async def check(ctx):
         status = server.status()
         playerCount = status.players.online
         players = status.players.sample
-        playerNames = [player.name for player in players]
+        if players != None:
+            playerNames = [player.name for player in players]
 
         if playerCount == 0:
             await ctx.respond(f"there is no one in the server.")
