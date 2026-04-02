@@ -24,7 +24,7 @@ async def usd_to_krw(ctx):
     er_value = usd_to_krw_dict["rates"]["KRW"]
     await ctx.respond(
         ".\n"
-        f"Date: {er_date}\n"
+        f"*{er_date},   UPDATED*\n"
         f"1 USD = {er_value:.2f} KRW")
 
 @bot.slash_command(name="check", description="This is to check how many the people are connected to the server")
